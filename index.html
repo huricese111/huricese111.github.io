@@ -15,24 +15,28 @@ description: 或许是最漂亮的Jekyll主题
     <h3>{{ page.description }}</h3>
 </div>
 
-<div class="row">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <ul class="nav">
-          <li><a href="./index.html">home</a></li>
-          <li class='active'><a href="./portfolio.html">portfolio</a></li>
-		  <li><a href="./contact.html">contact</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <ul class="nav nav-pills">
-      <li class='active'><a href="./digital_art.html">digital</a></li>
-	  <li><a href="./traditional_art.html">traditional</a></li>
-    </ul>
-  </div>
 
+<main class="tags-content">
+
+    <ul class="tags-list">
+        <li>
+        {% if site.recommend-tags and site.tags.size>0 %}
+            {% for tag in site.tags %}
+            <a href="#{{ tag[0] }}" class="tag">{{ tag[0]}}</a>
+            {% endfor %}
+        {% endif %}
+        </li>
+        
+        {% for tag in site.tags %}
+        <li>
+            <span class="tag-name" id="{{ tag[0] }}">「{{ tag[0] }}」</span>
+            {% for post in tag[1] %}
+            <a class="tag-post" href="{{ post.url | relative_url }}" title="{{ post.title }}">{{ post.title }}</a>
+            {% endfor %}
+        </li>
+        {% endfor%}
+    </ul>
+</main>
 
 <main class="g-container home-content">
     <div class="article-list">
