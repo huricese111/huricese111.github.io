@@ -41,15 +41,6 @@
       {{ page.content }}
     </article>
 
-{% if post %}
-  {% assign categories = post.categories %}
-{% else %}
-  {% assign categories = page.categories %}
-{% endif %}
-{% for category in categories %}
-  <span class="entry-categories"><a href="{{ page.category-url | absolute_url }}" rel="category">{{ page.category }}</a></span>{% unless forloop.last %},{% endunless %}
-{% endfor %}
-
     {% if site.social-share %}
     <div class="social-share-wrapper">
       <div class="social-share"></div>
